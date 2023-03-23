@@ -13,12 +13,16 @@ Hoping to help some python developers to build on Secret Network there are an ea
 ## Requirements:
 
 -[0] try to start the project in a virtual environment:
-> pip install virtualenv
-> python3 -m venv aenv
-> aenv/bin/activate
+```bash
+pip install virtualenv
+python3 -m venv aenv
+aenv/bin/activate
+```
 
 -[1] https://github.com/secretanalytics/secret-sdk-python
-> pip install secret-sdk
+```bash
+pip install secret-sdk
+```
 At this time i am working with secret-sdk==1.7.1
 
 -[2] For testing this code u should have a docker with localsecret instance running on your machine (if u are working on windows use Docker Desktop and the WSL2)
@@ -27,30 +31,40 @@ https://docs.docker.com/desktop/windows/wsl/#:~:text=Start%20Docker%20Desktop%20
 There are the docs of localsecret:
 #https://docs.scrt.network/secret-network-documentation/development/tools-and-libraries/local-secret
 
-'''docker run -it -p 9091:9091 -p 26657:26657 -p 1317:1317 -p 5000:5000 \
-  --name localsecret ghcr.io/scrtlabs/localsecret'''
+```bash
+docker run -it -p 9091:9091 -p 26657:26657 -p 1317:1317 -p 5000:5000 \
+  --name localsecret ghcr.io/scrtlabs/localsecret
+```
 
 -[3] Install secretcli for testing purposes
 https://docs.scrt.network/secret-network-documentation/development/tools-and-libraries/secret-cli/install
 
 //config secretcli in bash to link to localsecret docker instance
-> secretcli config node http://localhost:26657
-> secretcli config chain-id secretdev-1
-> secretcli config keyring-backend test
-> secretcli config output json
+```bash
+secretcli config node http://localhost:26657
+secretcli config chain-id secretdev-1
+secretcli config keyring-backend test
+secretcli config output json
+```
 
 //For check the node URL
-> secretcli status --node "$URL"
+```bash
+secretcli status --node "$URL"
+```
 
 //quering founds
-> secretcli query bank balances "secret16rx0tlptqvyw4zvngpwxr4rquj3597jpsdjrzq"
+```bash
+secretcli query bank balances "secret16rx0tlptqvyw4zvngpwxr4rquj3597jpsdjrzq"
+```
 
 ## Ussage:
 -Configure ur MNEMONICs to generate ur secretaddress
 -First u should have coins in ur wallet 1 for transfer
 (Localsecret has a faucet integrated on port 5000 where u target an secret address)
 Run in bash the next url for claim coins:
-> curl http://localhost:5000/faucet?address=secret16rx0tlptqvyw4zvngpwxr4rquj3597jpsdjrzq 
+```bash
+curl http://localhost:5000/faucet?address=secret16rx0tlptqvyw4zvngpwxr4rquj3597jpsdjrzq 
+```
 #(where the secret address is builded from MNEMONIC1 on my example)
 
 
